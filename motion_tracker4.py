@@ -68,7 +68,7 @@ class MotionTracker:
             cv2.imshow('Motion Tracking', combined)
             
             # Break if 'q' is pressed
-            if cv2.waitKey(100) & 0xFF == ord('q'):
+            if cv2.waitKey(1) & 0xFF == ord('q'):
                 break
 
         self.cap.release()
@@ -79,8 +79,8 @@ class MotionTracker:
         if not self.trajectories:
             print("No trajectories to plot!")
             return
-
-        trajectories = np.array(self.trajectories)
+        # flip the array so y axis points upwards
+        trajectories = np.flip(np.array(self.trajectories), axis = 0)
         
         # Plot vertical position over time
         plt.figure(figsize=(12, 4))
