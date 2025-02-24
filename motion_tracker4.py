@@ -28,10 +28,10 @@ class MotionTracker:
         """Process a single frame and return the center of mass."""
         # Convert to grayscale and invert
         gray = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)
-        inv = cv2.bitwise_not(gray)
+        #inv = cv2.bitwise_not(gray)
         
         # Threshold the image
-        _, thresh = cv2.threshold(inv, 20, 255, 0)
+        _, thresh = cv2.threshold(gray, 20, 255, 0)
         
         # Find center of mass
         com = self.center_of_mass(thresh)
@@ -105,7 +105,7 @@ class MotionTracker:
 
 def main():
     # Replace with your video path
-    video_path = '/home/frederik/Videos/untitled.mov'
+    video_path = '/home/frederik/Downloads/IMG_1114.mov'
     
     cv2.namedWindow('Motion Tracking',cv2.WINDOW_NORMAL)
     cv2.setWindowProperty('Motion Tracking',cv2.WND_PROP_FULLSCREEN,cv2.WINDOW_FULLSCREEN)
